@@ -1,1 +1,1 @@
-Test package for mila
+Testing utility for MiLa
