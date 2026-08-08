@@ -1,1 +1,28 @@
-println("Hello, world!");
+#!/usr/bin/env -S mila --check
+
+/*
+    Testing utility for MiLa
+*/
+
+fn block(id: "@id", block: "@block") {
+    catch err {
+        eval(block);
+    }
+    if (err) {
+        report_tagged(err["error_id"],"Block '" + id+"' raised an error: "+err["message"])
+    }
+}
+
+fn timeit(block: "@block") {
+    var start = get_time();
+    println("=== START");
+    catch err {
+        eval(block);
+    }
+    println("=== END");
+    var end = get_time();
+    println("Took " + (end - start) + " seconds.");
+    if (err) {
+        println("Block also raised an error, see:", err);
+    }
+}
